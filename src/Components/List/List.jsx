@@ -26,5 +26,12 @@ export default function List(props) {
 }
 
 List.propTypes = {
-
+  props: PropTypes.arrayOf(
+    PropTypes.shape({
+      type: PropTypes.string.isRequired,
+      url: PropTypes.string,
+      title: PropTypes.string,
+      views: PropTypes.number.isRequired
+    })
+  )
 }

@@ -13,5 +13,6 @@ export default function Video(props) {
 }
 
 Video.propTypes = {
-
+  url: PropTypes.string.isRequired,
+  views: PropTypes.number.isRequired
 }

@@ -1,3 +1,4 @@
+import './ViewsPretty.scss';
 import React from 'react'
 
 function New(props) {
@@ -24,9 +25,9 @@ const withViews = (Component, props) => class extends React.Component {
       return null
     } else if (props.views <= 100) {
       return (
-      <New>
-        <Component {...props} />
-      </New>
+        <New>
+          <Component {...props} />
+        </New>
       )
     } else if (props.views >= 1000) {
       return (
