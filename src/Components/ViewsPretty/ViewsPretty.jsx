@@ -1,4 +1,3 @@
-import { nanoid } from 'nanoid';
 import React from 'react'
 
 function New(props) {
@@ -20,20 +19,23 @@ function Popular(props) {
 };
 
 const withViews = (Component, props) => class extends React.Component {
-
   render() {
-    console.log(props);
-    if (+this.props.views < 0) {
+    if (props.views < 0) {
       return null
-    } else if (+this.props.views <= 100) {
-      const oldComponent = <Component {...props} />
-      const NewComponent = New(Component, props)
-      return <NewComponent key={nanoid(5)} />
-    } else if (+this.props.views >= 1000) {
-      const NewComponent = Popular(Component, props)
-      return <NewComponent key={nanoid(5)} />
+    } else if (props.views <= 100) {
+      return (
+      <New>
+        <Component {...props} />
+      </New>
+      )
+    } else if (props.views >= 1000) {
+      return (
+        <Popular>
+          <Component {...props} />
+        </Popular>
+        )
     } else {
-      return <Component key={nanoid(5)} />;
+      return <Component {...props} />;
     }
   }
 };

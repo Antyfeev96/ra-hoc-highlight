@@ -1,4 +1,5 @@
 import './List.scss';
+import { nanoid } from 'nanoid';
 import React from 'react'
 import PropTypes from 'prop-types'
 import Video from '../Video/Video';
@@ -7,19 +8,18 @@ import withViews from '../ViewsPretty/ViewsPretty';
 
 export default function List(props) {
   return props.list.map(item => {
-    console.log(item);
     switch (item.type) {
       default:
         return null;
       case 'video':
         const VideoComponent = withViews(Video, item);
           return (
-            <VideoComponent />
+            <VideoComponent key={nanoid(5)} />
           );
       case 'article':
         const ArticleComponent = withViews(Article, item);
           return (
-            <ArticleComponent />
+            <ArticleComponent key={nanoid(5)} />
           );
     }
 });
