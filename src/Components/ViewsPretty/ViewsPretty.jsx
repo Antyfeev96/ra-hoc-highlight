@@ -19,24 +19,24 @@ function Popular(props) {
   )
 };
 
-const withViews = (Component, props) => class extends React.Component {
+const withViews = (Component) => class extends React.Component {
   render() {
-    if (props.views < 0) {
+    if (this.props.views < 0) {
       return null
-    } else if (props.views <= 100) {
+    } else if (this.props.views <= 100) {
       return (
         <New>
-          <Component {...props} />
+          <Component {...this.props} />
         </New>
       )
-    } else if (props.views >= 1000) {
+    } else if (this.props.views >= 1000) {
       return (
         <Popular>
-          <Component {...props} />
+          <Component {...this.props} />
         </Popular>
         )
     } else {
-      return <Component {...props} />;
+      return <Component {...this.props} />;
     }
   }
 };

@@ -6,20 +6,21 @@ import Video from '../Video/Video';
 import Article from '../Article/Article';
 import withViews from '../ViewsPretty/ViewsPretty';
 
+const VideoComponent = withViews(Video);
+const ArticleComponent = withViews(Article);
+
 export default function List(props) {
   return props.list.map(item => {
     switch (item.type) {
       default:
         return null;
       case 'video':
-        const VideoComponent = withViews(Video, item);
           return (
-            <VideoComponent key={nanoid(5)} />
+            <VideoComponent {...item} key={nanoid(5)} />
           );
       case 'article':
-        const ArticleComponent = withViews(Article, item);
           return (
-            <ArticleComponent key={nanoid(5)} />
+            <ArticleComponent {...item} key={nanoid(5)} />
           );
     }
 });
